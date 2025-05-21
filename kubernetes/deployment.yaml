@@ -21,6 +21,9 @@ spec:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: "https://otlp.grafana.net:443"
         - name: OTEL_EXPORTER_OTLP_HEADERS
-          value: secrets.OTEL_EXPORTER_OTLP_HEADERS
+          valueFrom:
+            secretKeyRef:
+              name: grafana-cloud-secret
+              key: grafana-auth-header
         - name: OTEL_SERVICE_NAME
           value: "square-app"
