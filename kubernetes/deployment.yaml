@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: square-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: square-app
+  template:
+    metadata:
+      labels:
+        app: square-app
+    spec:
+      containers:
+      - name: square-app
+        image: aschiebold/square-app:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "https://otlp.grafana.net:443"
+        - name: OTEL_EXPORTER_OTLP_HEADERS
+          value: secrets.OTEL_EXPORTER_OTLP_HEADERS
+        - name: OTEL_SERVICE_NAME
+          value: "square-app"
