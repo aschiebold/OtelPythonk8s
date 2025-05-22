@@ -36,7 +36,7 @@ jobs:
           push: true
           tags: aschiebold/square-app:latest
 
-  deploy:
+deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -48,4 +48,4 @@ jobs:
           echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
           export KUBECONFIG=kubeconfig.yaml
       - name: Deploy to Kubernetes
-        run: kubectl apply -f kubernetes/deployment.yaml -f kubernetes/service.yaml
+        run: kubectl apply -f /Users/user/Desktop/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml

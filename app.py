@@ -7,6 +7,7 @@ app = Flask(__name__)
 # Initialize OpenTelemetry Flask instrumentation
 FlaskInstrumentor().instrument_app(app)
 
+#test1
 # Custom metric for square calculations
 meter = metrics.get_meter(__name__)
 square_counter = meter.create_counter("square_calculations", description="Number of square calculations")
