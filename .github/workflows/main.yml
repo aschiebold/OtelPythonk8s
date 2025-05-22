@@ -1,11 +1,21 @@
-- name: Set up kubeconfig
-  run: |
-    echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
-    export KUBECONFIG=$PWD/kubeconfig.yaml
-    kubectl config view
-    kubectl config get-contexts
-    kubectl config current-context
-    kubectl cluster-info
-- name: Apply Kubernetes manifests
-  run: |
-    kubectl apply -f kubernetes/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml --validate=false
+name: Deploy Kubernetes Manifests
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+      - name: Set up kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
+          export KUBECONFIG=$PWD/kubeconfig.yaml
+          kubectl config view # Debug: Show kubeconfig contents
+          kubectl config get-contexts # Debug: List contexts
+          kubectl config current-context # Debug: Show current context
+          kubectl cluster-info # Debug: Verify cluster connectivity
+      - name: Apply Kubernetes manifests
+        run: |
+          kubectl apply -f kubernetes/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml --validate=false
