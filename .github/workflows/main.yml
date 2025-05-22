@@ -16,6 +16,8 @@ jobs:
         run: |
           kubectl cluster-info
           kubectl get nodes
+      - name: Create secret.yaml
+        run: echo "${{ secrets.SECRET_YAML }}" > kubernetes/secret.yaml
       - name: Apply Kubernetes manifests
         run: |
           kubectl apply -f kubernetes/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml --validate=false
