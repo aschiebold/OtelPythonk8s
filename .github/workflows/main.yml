@@ -47,5 +47,7 @@ jobs:
         run: |
           echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
           export KUBECONFIG=kubeconfig.yaml
+      - name: Create secret.yaml
+        run: echo "${{ secrets.SECRET_YAML }}" > kubernetes/secret.yaml
       - name: Deploy to Kubernetes
-        run: kubectl apply -f /Users/user/Desktop/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
+        run: kubectl apply -f kubernetes/secret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
