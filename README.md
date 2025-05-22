@@ -12,8 +12,10 @@ kubectl apply -f kubernetes/deployment.yaml -f kubernetes/service.yaml -f /PATH/
 Test the app:
 curl -X POST http://localhost:8080/square -H "Content-Type: application/json" -d '{"number": 5}'
 
+CICD:
+
+![GithubCICD](screenshots/GithubCICD.png)
+
 View metrics in Grafana:
 
 ![grafanaMetrics](screenshots/grafanaMetrics.png)
-
-![GithubCICD](screenshots/GithubCICD.png)
