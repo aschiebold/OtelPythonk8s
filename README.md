@@ -15,3 +15,5 @@ curl -X POST http://localhost:8080/square -H "Content-Type: application/json" -d
 View metrics in Grafana:
 
 ![grafanaMetrics](screenshots/grafanaMetrics.png)
+
+![GithubCICD](screenshots/GithubCICD.png)
