@@ -36,7 +36,7 @@ jobs:
           push: true
           tags: aschiebold/square-app:latest
 
-deploy:
+  deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
