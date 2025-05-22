@@ -23,9 +23,6 @@ spec:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: "https://otlp-gateway-prod-us-east-2.grafana.net/otlp"
         - name: OTEL_EXPORTER_OTLP_HEADERS
-          valueFrom:
-            secretKeyRef:
-              name: grafana-cloud-secret
-              key: grafana-api-key
+          value: Authorization=Basic%20MTI1NDg4NjpnbGNfZXlKdklqb2lNVFF5TnpNek1DSXNJbTRpT2lKemRHRmpheTB4TWpVME9EZzJMVzkwWld3dGIyNWliMkZ5WkdsdVp5MWhiR3hoYmlJc0ltc2lPaUkxY25VeVZqUXliWG8xY0habmNIb3hUVEZ2YlRsMk9URWlMQ0p0SWpwN0luSWlPaUp3Y205a0xYVnpMV1ZoYzNRdE1DSjlmUT09
         - name: OTEL_EXPORTER_OTLP_PROTOCOL
           value: "http/protobuf"
